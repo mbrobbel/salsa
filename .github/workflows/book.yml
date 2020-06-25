@@ -12,16 +12,24 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      MDBOOK_VERSION: '0.4.0'
+      MDBOOK_LINKCHECK_VERSION: '0.7.0'
+      MDBOOK_MERMAID_VERSION: '^0.4'
     steps:
     - uses: actions/checkout@v2
+    - uses: actions/cache@v2
+      with:
+        path: ~/.cargo/bin
+        key: ${{ env.MDBOOK_MERMAID_VERSION }}
     - name: Install mdbook
       run: |
         mkdir -p $HOME/mdbook $HOME/mdbook-linkcheck
-        curl -L https://github.com/rust-lang/mdBook/releases/download/v0.4.0/mdbook-v0.4.0-x86_64-unknown-linux-gnu.tar.gz | tar xz -C $HOME/mdbook
+        curl -L https://github.com/rust-lang/mdBook/releases/download/v$MDBOOK_VERSION/mdbook-v$MDBOOK_VERSION-x86_64-unknown-linux-gnu.tar.gz | tar xz -C $HOME/mdbook
         echo "::add-path::${HOME}/mdbook/"
-        curl -L https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v0.7.0/mdbook-linkcheck-v0.7.0-x86_64-unknown-linux-gnu.tar.gz | tar xz -C $HOME/mdbook-linkcheck
+        curl -L https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/download/v$MDBOOK_LINKCHECK_VERSION/mdbook-linkcheck-v$MDBOOK_LINKCHECK_VERSION-x86_64-unknown-linux-gnu.tar.gz | tar xz -C $HOME/mdbook-linkcheck
         echo "::add-path::${HOME}/mdbook-linkcheck/"
-        cargo install mdbook-mermaid --version '^0.4' --debug
+        mdbook-mermaid --version || cargo install mdbook-mermaid --version $MDBOOK_MERMAID_VERSION --debug
     - name: Build
       run: mdbook build
       working-directory: book
