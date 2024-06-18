@@ -1,9 +1,12 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="en" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Plumbing - Salsa</title>
+                
+
+        <!-- Custom HTML head -->
         
 
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -11,34 +14,31 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
+                <link rel="icon" href="favicon.svg">
+                        <link rel="shortcut icon" href="favicon.png">
+                <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/general.css">
         <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
-
+                <link rel="stylesheet" href="css/print.css" media="print">
+        
         <!-- Fonts -->
         <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
-
+                <link rel="stylesheet" href="fonts/fonts.css">
+        
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
         <link rel="stylesheet" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
+                <link rel="stylesheet" href="mermaid.css">
         
-        <link rel="stylesheet" href="mermaid.css">
-        
-
-        
-    </head>
-    <body class="light">
+            </head>
+    <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "";
-            var default_theme = "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -62,8 +62,11 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
         </script>
 
         <!-- Hide / unhide sidebar before it is displayed -->
@@ -80,8 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li><a href="about_salsa.html"><strong aria-hidden="true">1.</strong> About salsa</a></li><li><a href="how_to_use.html"><strong aria-hidden="true">2.</strong> How to use Salsa</a></li><li><a href="how_salsa_works.html"><strong aria-hidden="true">3.</strong> How Salsa works</a></li><li><a href="common_patterns.html"><strong aria-hidden="true">4.</strong> Common patterns</a></li><li><ol class="section"><li><a href="common_patterns/selection.html"><strong aria-hidden="true">4.1.</strong> Selection</a></li><li><a href="common_patterns/on_demand_inputs.html"><strong aria-hidden="true">4.2.</strong> On-demand (Lazy) inputs</a></li></ol></li><li><a href="videos.html"><strong aria-hidden="true">5.</strong> YouTube videos</a></li><li><a href="plumbing.html" class="active"><strong aria-hidden="true">6.</strong> Plumbing</a></li></ol>
-            </div>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="about_salsa.html"><strong aria-hidden="true">1.</strong> About salsa</a></li><li class="chapter-item expanded affix "><li class="part-title">How to use Salsa</li><li class="chapter-item expanded "><a href="overview.html"><strong aria-hidden="true">2.</strong> Overview</a></li><li class="chapter-item expanded "><a href="tutorial.html"><strong aria-hidden="true">3.</strong> Tutorial: calc language</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tutorial/structure.html"><strong aria-hidden="true">3.1.</strong> Basic structure</a></li><li class="chapter-item expanded "><a href="tutorial/jar.html"><strong aria-hidden="true">3.2.</strong> Jars and databases</a></li><li class="chapter-item expanded "><a href="tutorial/db.html"><strong aria-hidden="true">3.3.</strong> Defining the database struct</a></li><li class="chapter-item expanded "><a href="tutorial/ir.html"><strong aria-hidden="true">3.4.</strong> Defining the IR: the various &quot;salsa structs&quot;</a></li><li class="chapter-item expanded "><a href="tutorial/parser.html"><strong aria-hidden="true">3.5.</strong> Defining the parser: memoized functions and inputs</a></li><li class="chapter-item expanded "><a href="tutorial/accumulators.html"><strong aria-hidden="true">3.6.</strong> Defining the parser: reporting errors</a></li><li class="chapter-item expanded "><a href="tutorial/debug.html"><strong aria-hidden="true">3.7.</strong> Defining the parser: debug impls and testing</a></li><li class="chapter-item expanded "><a href="tutorial/checker.html"><strong aria-hidden="true">3.8.</strong> Defining the checker</a></li><li class="chapter-item expanded "><a href="tutorial/interpreter.html"><strong aria-hidden="true">3.9.</strong> Defining the interpreter</a></li></ol></li><li class="chapter-item expanded "><a href="reference.html"><strong aria-hidden="true">4.</strong> Reference</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="reference/durability.html"><strong aria-hidden="true">4.1.</strong> Durability</a></li><li class="chapter-item expanded "><a href="reference/algorithm.html"><strong aria-hidden="true">4.2.</strong> Algorithm</a></li></ol></li><li class="chapter-item expanded "><a href="common_patterns.html"><strong aria-hidden="true">5.</strong> Common patterns</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="common_patterns/selection.html"><strong aria-hidden="true">5.1.</strong> Selection</a></li><li class="chapter-item expanded "><a href="common_patterns/on_demand_inputs.html"><strong aria-hidden="true">5.2.</strong> On-demand (Lazy) inputs</a></li></ol></li><li class="chapter-item expanded "><a href="tuning.html"><strong aria-hidden="true">6.</strong> Tuning</a></li><li class="chapter-item expanded "><a href="cycles.html"><strong aria-hidden="true">7.</strong> Cycle handling</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cycles/fallback.html"><strong aria-hidden="true">7.1.</strong> Recovering via fallback</a></li></ol></li><li class="chapter-item expanded "><li class="part-title">How Salsa works internally</li><li class="chapter-item expanded "><a href="how_salsa_works.html"><strong aria-hidden="true">8.</strong> How Salsa works</a></li><li class="chapter-item expanded "><a href="videos.html"><strong aria-hidden="true">9.</strong> Videos</a></li><li class="chapter-item expanded "><a href="plumbing.html" class="active"><strong aria-hidden="true">10.</strong> Plumbing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/jars_and_ingredients.html"><strong aria-hidden="true">10.1.</strong> Jars and ingredients</a></li><li class="chapter-item expanded "><a href="plumbing/database_and_runtime.html"><strong aria-hidden="true">10.2.</strong> Databases and runtime</a></li><li class="chapter-item expanded "><a href="plumbing/db_lifetime.html"><strong aria-hidden="true">10.3.</strong> The db lifetime on tracked/interned structs</a></li><li class="chapter-item expanded "><a href="plumbing/tracked_structs.html"><strong aria-hidden="true">10.4.</strong> Tracked structures</a></li><li class="chapter-item expanded "><a href="plumbing/query_ops.html"><strong aria-hidden="true">10.5.</strong> Query operations</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/maybe_changed_after.html"><strong aria-hidden="true">10.5.1.</strong> maybe changed after</a></li><li class="chapter-item expanded "><a href="plumbing/fetch.html"><strong aria-hidden="true">10.5.2.</strong> Fetch</a></li><li class="chapter-item expanded "><a href="plumbing/derived_flowchart.html"><strong aria-hidden="true">10.5.3.</strong> Derived queries flowchart</a></li><li class="chapter-item expanded "><a href="plumbing/cycles.html"><strong aria-hidden="true">10.5.4.</strong> Cycle handling</a></li></ol></li><li class="chapter-item expanded "><a href="plumbing/terminology.html"><strong aria-hidden="true">10.6.</strong> Terminology</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="plumbing/terminology/backdate.html"><strong aria-hidden="true">10.6.1.</strong> Backdate</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/changed_at.html"><strong aria-hidden="true">10.6.2.</strong> Changed at</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/dependency.html"><strong aria-hidden="true">10.6.3.</strong> Dependency</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/derived_query.html"><strong aria-hidden="true">10.6.4.</strong> Derived query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/durability.html"><strong aria-hidden="true">10.6.5.</strong> Durability</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/input_query.html"><strong aria-hidden="true">10.6.6.</strong> Input query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/ingredient.html"><strong aria-hidden="true">10.6.7.</strong> Ingredient</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/LRU.html"><strong aria-hidden="true">10.6.8.</strong> LRU</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/memo.html"><strong aria-hidden="true">10.6.9.</strong> Memo</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/query.html"><strong aria-hidden="true">10.6.10.</strong> Query</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/query_function.html"><strong aria-hidden="true">10.6.11.</strong> Query function</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/revision.html"><strong aria-hidden="true">10.6.12.</strong> Revision</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/salsa_item.html"><strong aria-hidden="true">10.6.13.</strong> Salsa item</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/salsa_struct.html"><strong aria-hidden="true">10.6.14.</strong> Salsa struct</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/untracked.html"><strong aria-hidden="true">10.6.15.</strong> Untracked dependency</a></li><li class="chapter-item expanded "><a href="plumbing/terminology/verified.html"><strong aria-hidden="true">10.6.16.</strong> Verified</a></li></ol></li></ol></li><li class="chapter-item expanded "><li class="part-title">Appendices</li><li class="chapter-item expanded "><a href="meta.html"><strong aria-hidden="true">11.</strong> Meta: about the book itself</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -89,44 +91,40 @@
 
             <div class="page">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
 
-                        <h1 class="menu-title">Salsa</h1>
+                    <h1 class="menu-title">Salsa</h1>
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
-                            
-                        </div>
+                    <div class="right-buttons">
+                                                <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
                     </div>
                 </div>
 
-                
-                <div id="search-wrapper" class="hidden">
+                                <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -135,7 +133,6 @@
                     </div>
                 </div>
                 
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -147,317 +144,79 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#plumbing" id="plumbing">Plumbing</a></h1>
-<p><strong>Last updated:</strong> 2020-06-24</p>
+                        <h1 id="plumbing"><a class="header" href="#plumbing">Plumbing</a></h1>
+<blockquote>
+<p>⚠️ <strong>IN-PROGRESS VERSION OF SALSA.</strong> ⚠️</p>
+<p>This page describes the unreleased &quot;Salsa 2022&quot; version, which is a major departure from older versions of salsa. The code here works but is only available on github and from the <code>salsa-2022</code> crate.</p>
+<p>If you are looking for the older version of salsa, simply visit <a href="https://salsa-rs.netlify.app/salsa">this link</a></p>
+</blockquote>
 <p>This chapter documents the code that salsa generates and its &quot;inner workings&quot;.
 We refer to this as the &quot;plumbing&quot;.</p>
-<p>This page walks through the <a href="https://github.com/salsa-rs/salsa/blob/master/examples/hello_world/main.rs">&quot;Hello, World!&quot;</a> example and explains the code that
-it generates. Please take it with a grain of salt: while we make an effort to
-keep this documentation up to date, this sort of thing can fall out of date
-easily.</p>
-<p>If you'd like to see for yourself, you can set the environment variable
-<code>SALSA_DUMP</code> to 1 while the procedural macro runs, and it will dump the full
-output to stdout. I recommend piping the output through rustfmt.</p>
-<h2><a class="header" href="#query-groups-and-query-group-structs" id="query-groups-and-query-group-structs">Query groups and query group structs</a></h2>
-<p>When you define a query group trait:</p>
-<pre><code class="language-rust ignore">#[salsa::query_group(HelloWorldStorage)]
-trait HelloWorld: salsa::Database {
-    // For each query, we give the name, some input keys (here, we
-    // have one key, `()`) and the output type `Arc&lt;String&gt;`. We can
-    // use attributes to give other configuration:
-    //
-    // - `salsa::input` indicates that this is an &quot;input&quot; to the system,
-    //   which must be explicitly set. The `salsa::query_group` method
-    //   will autogenerate a `set_input_string` method that can be
-    //   used to set the input.
-    #[salsa::input]
-    fn input_string(&amp;self, key: ()) -&gt; Arc&lt;String&gt;;
-
-    // This is a *derived query*, meaning its value is specified by
-    // a function (see Step 2, below).
-    fn length(&amp;self, key: ()) -&gt; usize;
-}
-</code></pre>
-<p>the <code>salsa::query_group</code> macro generates a number of things:</p>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p>The plumbing section is broken up into chapters:</p>
 <ul>
-<li>a copy of the <code>HelloWorld</code> trait, minus the salsa annotations, and lightly edited</li>
-<li>a &quot;group struct&quot; named <code>HelloWorldStorage</code> that represents the group; this struct implements <code>plumbing::QueryGroup</code>
+<li>The <a href="./plumbing/jars_and_ingredients.html">jars and ingredients</a> covers how each salsa item (like a tracked function) specifies what data it needs and runtime, and how links between items work.</li>
+<li>The <a href="./plumbing/database_and_runtime.html">database and runtime</a> covers the data structures that are used at runtime to coordinate workers, trigger cancellation, track which functions are active and what dependencies they have accrued, and so forth.</li>
+<li>The <a href="./plumbing/query_ops.html">query operations</a> chapter describes how the major operations on function ingredients work. This text was written for an older version of salsa but the logic is the same:
 <ul>
-<li>somewhat confusingly, this struct doesn't actually contain the storage itself, but rather has an associated type that leads to the &quot;true&quot; storage struct</li>
+<li>The <a href="./plumbing/maybe_changed_after.html">maybe changed after</a> operation determines when a memoized value for a tracked function is out of date.</li>
+<li>The <a href="./plumbing/fetch.html">fetch</a> operation computes the most recent value.</li>
+<li>The <a href="./plumbing/derived_flowchart.html">derived queries flowchart</a> depicts the logic in flowchart form.</li>
+<li>The <a href="./plumbing/cycles.html">cycle handling</a> handling chapter describes what happens when cycles occur.</li>
 </ul>
 </li>
-<li>an impl of the <code>HelloWorld</code> trait, for any database type</li>
-<li>for each query, a &quot;query struct&quot; named after the query; these structs implement <code>plumbing::Query</code> and sometimes other plumbing traits</li>
-<li>a group key, an enum that can identify any query within the group and store its key</li>
-<li>the associated storage struct, which contains the actual hashmaps that store the data for all queries in the group</li>
+<li>The <a href="./plumbing/terminology.html">terminology</a> section describes various words that appear throughout.</li>
 </ul>
-<p>Note that there are a number of structs and types (e.g., the group descriptor
-and associated storage struct) that represent things which don't have &quot;public&quot;
-names. We currently generate mangled names with <code>__</code> afterwards, but those names
-are not meant to be exposed to the user (ideally we'd use hygiene to enforce
-this).</p>
-<p>So the generated code looks something like this. We'll go into more detail on
-each part in the following sections.</p>
-<pre><code class="language-rust ignore">// First, a copy of the trait, though sometimes with some extra
-// methods (e.g., `set_input_string`)
-trait HelloWorld: salsa::Database {
-    fn input_string(&amp;self, key: ()) -&gt; Arc&lt;String&gt;;
-    fn set_input_string(&amp;mut self, key: (), value: Arc&lt;String&gt;);
-    fn length(&amp;self, key: ()) -&gt; usize;
-}
-
-// Next, the group struct
-struct HelloWorldStorage { }
-impl&lt;DB&gt; salsa::plumbing::QueryGroup&lt;DB&gt; for HelloWorldStorage { ... }
-
-// Next, the impl of the trait
-impl&lt;DB&gt; HelloWorld for DB
-where
-  DB: salsa::Database,
-  DB: salsa::plumbing::HasQueryGroup&lt;HelloWorldStorage&gt;,
-{
-  ...
-}
-
-// Next, a series of query structs and query impls
-struct InputQuery { }
-unsafe impl&lt;DB&gt; salsa::Query&lt;DB&gt; for InputQuery
-where
-    DB: HelloWorld,
-    DB: salsa::plumbing::HasQueryGroup&lt;#group_struct&gt;,
-    DB: salsa::Database,
-{
-    ...
-}
-struct LengthQuery { }
-unsafe impl&lt;DB&gt; salsa::Query&lt;DB&gt; for LengthQuery
-where
-    DB: HelloWorld,
-    DB: salsa::plumbing::HasQueryGroup&lt;#group_struct&gt;,
-    DB: salsa::Database,
-{
-    ...
-}
-
-// For derived queries, those include implementations
-// of additional traits like `QueryFunction`
-unsafe impl&lt;DB&gt; salsa::QueryFunction&lt;DB&gt; for LengthQuery
-where
-    DB: HelloWorld,
-    DB: salsa::plumbing::HasQueryGroup&lt;#group_struct&gt;,
-    DB: salsa::Database,
-{
-    ...
-}
-
-// The group key
-enum HelloWorldGroupKey__ { .. }
-
-// The group storage
-struct HelloWorldGroupStorage__ { .. }
-</code></pre>
-<h3><a class="header" href="#the-group-struct-and-querygroup-trait" id="the-group-struct-and-querygroup-trait">The group struct and <code>QueryGroup</code> trait</a></h3>
-<p>The group struct is the only thing we generate whose name is known to the user.
-For a query group named <code>Foo</code>, it is conventionally called <code>FooStorage</code>, hence
-the name <code>HelloWorldStorage</code> in our example.</p>
-<p>Despite the name &quot;Storage&quot;, the struct itself has no fields. It exists only to
-implement the <code>QueryGroup</code> trait. This <em>trait</em> has a number of associated types
-that reference various bits of the query group, including the actual &quot;group
-storage&quot; struct:</p>
-<pre><code class="language-rust ignore">struct HelloWorldStorage { }
-impl&lt;DB&gt; salsa::plumbing::QueryGroup&lt;DB&gt; for HelloWorldStorage {
-    type GroupStorage = HelloWorldGroupStorage__; // generated struct
-    type GroupKey = HelloWorldGroupKey__;
-    type GroupData = ((), Arc&lt;String&gt;, (), usize);
-}
-</code></pre>
-<p>We'll go into detail on these types below and the role they play, but one that
-we didn't mention yet is <code>GroupData</code>. That is a kind of hack used to manage
-send/sync around slots, and it gets covered in the section on slots.</p>
-<h3><a class="header" href="#impl-of-the-hello-world-trait" id="impl-of-the-hello-world-trait">Impl of the hello world trait</a></h3>
-<p>Ultimately, every salsa query group is going to be implemented by your final
-database type, which is not currently known to us (it is created by combining
-multiple salsa query groups). In fact, this salsa query group could be composed
-into multiple database types. However, we want to generate the impl of the query-group
-trait here in this crate, because this is the point where the trait definition is visible
-and known to us (otherwise, we'd have to duplicate the method definitions).</p>
-<p>So what we do is that we define a different trait, called <code>plumbing::HasQueryGroup&lt;G&gt;</code>,
-that can be implemented by the database type. <code>HasQueryGroup</code> is generic over
-the query group struct. So then we can provide an impl of <code>HelloWorld</code> for any
-database type <code>DB</code> where <code>DB: HasQueryGroup&lt;HelloWorldStorage&gt;</code>. This
-<code>HasQueryGroup</code> defines a few methods that, given a <code>DB</code>, give access to the
-data for the query group and a few other things.</p>
-<p>Thus we can generate an impl that looks like:</p>
-<pre><code class="language-rust ignore">impl&lt;DB&gt; HelloWorld for DB
-where
-    DB: salsa::Database,
-    DB: salsa::plumbing::HasQueryGroup&lt;HelloWorld&gt;
-{
-    ...
-    fn length(&amp;self, key: ()) -&gt; Arc&lt;String&gt; {
-      &lt;Self as salsa::plumbing::GetQueryTable&lt;HelloWorldLength__&gt;&gt;::get_query_table(self).get(())
-    }
-}
-</code></pre>
-<p>You can see that the various methods just hook into generic functions in the
-<code>salsa::plumbing</code> module. These functions are generic over the query types
-(<code>HelloWorldLength__</code>) that will be described shortly. The details of the &quot;query
-table&quot; are covered in a future section, but in short this code pulls out the
-hasmap for storing the <code>length</code> results and invokes the generic salsa logic to
-check for a valid result, etc.</p>
-<h3><a class="header" href="#for-each-query-a-query-struct" id="for-each-query-a-query-struct">For each query, a query struct</a></h3>
-<p>As we referenced in the previous section, each query in the trait gets a struct
-that represents it. This struct is named after the query, converted into snake
-case and with the word <code>Query</code> appended. In typical Salsa workflows, these
-structs are not meant to be named or used, but in some cases it may be required.
-For e.g. the <code>length</code> query, this structs might look something like:</p>
-<pre><code class="language-rust ignore">struct LengthQuery { }
-</code></pre>
-<p>The struct also implements the <code>plumbing::Query</code> trait, which defines
-a bunch of metadata about the query (and repeats, for convenience,
-some of the data about the group that the query is in):</p>
-<pre><code class="language-rust ignore">unsafe impl&lt;DB&gt; salsa::Query&lt;DB&gt; for LengthQuery
-where
-    DB: HelloWorld,
-    DB: salsa::plumbing::HasQueryGroup&lt;#group_struct&gt;,
-    DB: salsa::Database,
-{
-    // A tuple of the types of the function parameters trom trait.
-    type Key = ((), );
-
-    // The return value of the function in the trait.
-    type Value = Arc&lt;String&gt;;
-
-    // The &quot;query storage&quot; references a type from within salsa
-    // that stores the actual query data and defines the
-    // logic for accessing and revalidating it.
-    //
-    // It is generic over the query type which lets it
-    // customize itself to the keys/value of this particular
-    // query.
-    type Storage = salsa::derived::DerivedStorage&lt;
-        DB,
-        LengthQuery,
-        salsa::plumbing::MemoizedStorage,
-    &gt;;
-
-    // Types from the query group, repeated for convenience.
-    type Group = HelloWorldStorage;
-    type GroupStorage = HelloWorldGroupStorage__;
-    type GroupKey = HelloWorldGroupKey__;
-
-    // Given the storage for the entire group, extract
-    // the storage for just this query. Described when
-    // we talk about group storage.
-    fn query_storage(
-        group_storage: &amp;HelloWorldGroupStorage__,
-    ) -&gt; &amp;std::sync::Arc&lt;Self::Storage&gt; {
-        &amp;group_storage.length
-    }
-
-    // Given the key for this query, construct the &quot;group key&quot;
-    // that situates it within the group. Described when
-    // we talk about group key.
-    fn group_key(key: Self::Key) -&gt; Self::GroupKey {
-        HelloWorldGroupKey__::length(key)
-    }
-}
-</code></pre>
-<p>Depending on the kind of query, we may also generate other impls, such as an
-impl of <code>salsa::plumbing::QueryFunction</code>, which defines the methods for
-executing the body of a query. This impl would then include a call to the user's
-actual function.</p>
-<h3><a class="header" href="#group-key" id="group-key">Group key</a></h3>
-<p>The &quot;query key&quot; is the inputs to the query, and identifies a particular query
-instace: in our example, it is a value of type <code>()</code> (so there is only one
-instance of the query), but typically it's some other type. The &quot;group key&quot; then
-broadens that to include the identifier of the query within the group. So instead
-of just <code>()</code> the group key would encode (e.g.) <code>Length(())</code> (the &quot;length&quot; query
-applied to the <code>()</code> key). It is represented as an enum, which we generate,
-with one variant per query:</p>
-<pre><code class="language-rust ignore">#[derive(Clone, Debug, PartialEq, Eq, Hash)]
-enum HelloWorldGroupKey__ {
-  input(()),
-  length(()),
-}
-</code></pre>
-<p>The <code>Query</code> trait that we saw earlier includes a method <code>group_key</code> for wrapping
-the key for some individual query into the group key.</p>
-<h3><a class="header" href="#group-storege" id="group-storege">Group storege</a></h3>
-<p>The &quot;group storage&quot; is the actual struct that contains all the hashtables and
-so forth for each query. The types of these are ultimately defined by the
-<code>Storage</code> associated type for each query type. The struct is generic over the
-final database type:</p>
-<pre><code class="language-rust ignore">struct HelloWorldGroupStorage__&lt;DB&gt; {
-    input: &lt;InputQuery as Query&lt;DB&gt;&gt;::Storage,
-    length: &lt;LengthQuery as Query&lt;DB&gt;&gt;::Storage,
-}
-</code></pre>
-<p>We also generate some impls: first is an impl of <code>Default</code> and the second is a
-method <code>for_each_query</code> that simply iterates over each field and invokes a
-method on it. This method is called by some of the code we generate for the
-database in order to implement debugging methods that &quot;sweep&quot; over all the
-queries.</p>
-<pre><code class="language-rust ignore">impl&lt;DB&gt; HelloWorldGroupStorage__&lt;DB&gt; {
-    fn for_each_query(&amp;self, db: &amp;DB, method: &amp;mut dyn FnMut(...)) {
-        ...
-    }
-}
-</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
-                            <a rel="prev" href="videos.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="videos.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-
+                                                    <a rel="next" href="plumbing/jars_and_ingredients.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
                         
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
-                    <a href="videos.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="videos.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-
-                
-            </nav>
+                                    <a rel="next" href="plumbing/jars_and_ingredients.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
 
         </div>
 
         
-
         
-
         
-
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
         
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        
+                <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
         
-
         <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+                <script type="text/javascript" src="mermaid.min.js"></script>
+                <script type="text/javascript" src="mermaid-init.js"></script>
         
-        <script type="text/javascript" src="mermaid.min.js"></script>
         
-        <script type="text/javascript" src="mermaid-init.js"></script>
-        
-
-        
-
     </body>
 </html>
